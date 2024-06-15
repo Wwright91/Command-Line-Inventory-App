@@ -15,5 +15,8 @@
   },
   "keywords": [],
   "author": "Wisdom Wright",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nanoid": "^3.3.7"
+  }
 }
