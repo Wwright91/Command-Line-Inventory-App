@@ -51,4 +51,21 @@ function destroy(weedProducts, productId) {
   return weedProducts;
 }
 
-module.exports = { create, index, show, destroy };
+function update(weedProducts, productId, availabilty) {
+  const index = weedProducts.findIndex((product) => product.id === productId);
+  if (index > -1) {
+    weedProducts[index].inStock = JSON.parse(availabilty);
+    inform(
+      `Product '${show(
+        weedProducts,
+        productId,
+        true
+      )}' was successfully updated`
+    );
+  } else {
+    inform(`No product was found with ID: '${productId}'. No action taken`);
+  }
+  return weedProducts;
+}
+
+module.exports = { create, index, show, destroy, update };
