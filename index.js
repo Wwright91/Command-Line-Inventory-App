@@ -1,10 +1,11 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers");
-const { create, index } = require("./src/weedController");
+const { create, index, show } = require("./src/weedController");
 
 const inform = console.log;
 
 function run() {
   const action = process.argv[2];
+  const productId = process.argv[3];
   let weedProducts = readJSONFile("data", "weed.json");
   let writeToFile = false;
   let updatedWeedProducts = [];
@@ -18,7 +19,7 @@ function run() {
       writeToFile = true;
       break;
     case "show":
-      inform(action);
+      inform(show(weedProducts, productId));
       break;
     case "update":
       inform(action);

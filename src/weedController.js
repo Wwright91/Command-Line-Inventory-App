@@ -21,4 +21,12 @@ function index(weedProducts) {
     .join("\n");
 }
 
-module.exports = { create, index };
+function show(weedProducts, productId) {
+  const currentProduct = weedProducts.find(
+    (product) => product.id === productId
+  );
+  const { id, name, priceInCents, inStock, strand } = currentProduct;
+  return `ID: ${id} | Product Name: ${name} | Cost: ${priceInCents} | In Stock: ${inStock} | Strand: ${strand}`;
+}
+
+module.exports = { create, index, show };
