@@ -1,5 +1,5 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers");
-const { create } = require("./src/weedController");
+const { create, index } = require("./src/weedController");
 
 const inform = console.log;
 
@@ -11,7 +11,7 @@ function run() {
 
   switch (action) {
     case "index":
-      inform(action);
+      inform(index(weedProducts));
       break;
     case "create":
       updatedWeedProducts = create(weedProducts, process.argv.slice(3));

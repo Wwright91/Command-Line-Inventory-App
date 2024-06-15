@@ -15,4 +15,10 @@ function create(weedProducts, productDetails) {
   return weedProducts;
 }
 
-module.exports = { create };
+function index(weedProducts) {
+  return weedProducts
+    .map(({ id, name }) => `ID: ${id} - Product Name: ${name}`)
+    .join("\n");
+}
+
+module.exports = { create, index };
