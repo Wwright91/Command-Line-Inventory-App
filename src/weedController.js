@@ -127,6 +127,12 @@ function emptyCart(weedCart) {
   return weedCart;
 }
 
+function filterProductsInStock(weedProducts, availabilty) {
+  return weedProducts.filter(
+    (product) => product.inStock === JSON.parse(availabilty)
+  );
+}
+
 module.exports = {
   create,
   index,
@@ -136,4 +142,5 @@ module.exports = {
   addToCart,
   showCart,
   emptyCart,
+  filterProductsInStock,
 };

@@ -8,6 +8,7 @@ const {
   addToCart,
   showCart,
   emptyCart,
+  filterProductsInStock,
 } = require("./src/weedController");
 
 const inform = console.log;
@@ -51,6 +52,9 @@ function run() {
     case "emptyCart":
       inform(emptyCart(weedCart));
       writeToCart = true;
+      break;
+    case "filter":
+      inform(filterProductsInStock(weedProducts, process.argv[3]));
       break;
     default:
       inform("There was an error.");

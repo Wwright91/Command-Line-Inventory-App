@@ -12,7 +12,8 @@
     "destroy": "node index.js destroy",
     "addToCart": "node index.js addToCart",
     "showCart": "node index.js showCart",
-    "emptyCart": "node index.js emptyCart"
+    "emptyCart": "node index.js emptyCart",
+    "filter": "node index.js filter"
   },
   "keywords": [],
   "author": "Wisdom Wright",
