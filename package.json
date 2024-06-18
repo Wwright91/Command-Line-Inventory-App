@@ -11,7 +11,7 @@
     "update": "node index.js update",
     "destroy": "node index.js destroy",
     "addToCart": "node index.js addToCart",
-    "total": "node index.js total",
+    "showCart": "node index.js showCart",
     "empty": "node index.js empty"
   },
   "keywords": [],

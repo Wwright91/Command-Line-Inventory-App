@@ -6,6 +6,7 @@ const {
   destroy,
   update,
   addToCart,
+  showCart,
 } = require("./src/weedController");
 
 const inform = console.log;
@@ -43,8 +44,8 @@ function run() {
       updatedWeedCart = addToCart(weedCart, productId);
       writeToCart = true;
       break;
-    case "total":
-      inform(action);
+    case "showCart":
+      inform(showCart(weedCart));
       break;
     case "empty":
       inform(action);

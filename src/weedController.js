@@ -99,4 +99,23 @@ function addToCart(weedCart, productId) {
   return weedCart;
 }
 
-module.exports = { create, index, show, destroy, update, addToCart };
+function showCart(weedCart) {
+  return `Cart Items: ${weedCart
+    .map(
+      ({ id, name, priceInCents, quantity }) =>
+        "\n" + `${id} | ${name} | $${priceInCents / 100} | ${quantity}`
+    )
+    .join("")} \nCart Total: $${getTotal(weedCart)}`;
+}
+
+function getTotal(arr) {
+  let total = 0;
+
+  for (let product of arr) {
+    total += product.priceInCents * product.quantity;
+  }
+
+  return total / 100;
+}
+
+module.exports = { create, index, show, destroy, update, addToCart, showCart };
