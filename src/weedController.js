@@ -100,12 +100,16 @@ function addToCart(weedCart, productId) {
 }
 
 function showCart(weedCart) {
-  return `Cart Items: ${weedCart
-    .map(
-      ({ id, name, priceInCents, quantity }) =>
-        "\n" + `${id} | ${name} | $${priceInCents / 100} | ${quantity}`
-    )
-    .join("")} \nCart Total: $${getTotal(weedCart)}`;
+  if (!weedCart.length) {
+    inform("Cart is empty!");
+    return weedCart;
+  } else
+    return `Cart Items: ${weedCart
+      .map(
+        ({ id, name, priceInCents, quantity }) =>
+          "\n" + `${id} | ${name} | $${priceInCents / 100} | ${quantity}`
+      )
+      .join("")} \nCart Total: $${getTotal(weedCart)}`;
 }
 
 function getTotal(arr) {
@@ -118,4 +122,18 @@ function getTotal(arr) {
   return total / 100;
 }
 
-module.exports = { create, index, show, destroy, update, addToCart, showCart };
+function emptyCart(weedCart) {
+  weedCart = [];
+  return weedCart;
+}
+
+module.exports = {
+  create,
+  index,
+  show,
+  destroy,
+  update,
+  addToCart,
+  showCart,
+  emptyCart,
+};
