@@ -5,6 +5,7 @@ const {
   show,
   destroy,
   update,
+  addToCart,
 } = require("./src/weedController");
 
 const inform = console.log;
@@ -13,8 +14,11 @@ function run() {
   const action = process.argv[2];
   const productId = process.argv[3];
   let weedProducts = readJSONFile("data", "weed.json");
+  let weedCart = readJSONFile("data", "weedCart.json");
   let writeToFile = false;
+  let writeToCart = false;
   let updatedWeedProducts = [];
+  let updatedWeedCart = [];
 
   switch (action) {
     case "index":
@@ -35,6 +39,10 @@ function run() {
       updatedWeedProducts = destroy(weedProducts, productId);
       writeToFile = true;
       break;
+    case "addToCart":
+      updatedWeedCart = addToCart(weedCart, productId);
+      writeToCart = true;
+      break;
     case "total":
       inform(action);
       break;
@@ -46,6 +54,9 @@ function run() {
   }
   if (writeToFile) {
     writeJSONFile("data", "weed.json", updatedWeedProducts);
+  }
+  if (writeToCart) {
+    writeJSONFile("data", "weedCart.json", updatedWeedCart);
   }
 }
 

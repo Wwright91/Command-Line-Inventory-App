@@ -1,5 +1,7 @@
 const { nanoid } = require("nanoid");
 
+const weedProductsJSON = require("../data/weed.json");
+
 const inform = console.log;
 
 function create(weedProducts, productDetails) {
@@ -68,4 +70,33 @@ function update(weedProducts, productId, availabilty) {
   return weedProducts;
 }
 
-module.exports = { create, index, show, destroy, update };
+function addToCart(weedCart, productId) {
+  const productToAdd = weedProductsJSON.find(
+    (product) => product.id === productId
+  );
+  const productInCart = weedCart.findIndex(
+    (product) => product.id === productId
+  );
+  if (productToAdd && productToAdd.inStock) {
+    if (productInCart > -1) {
+      weedCart[productInCart].quantity++;
+    } else {
+      productToAdd.quantity = 1;
+      weedCart.push(productToAdd);
+    }
+    inform(`Product '${productToAdd.name}' was added to the cart`);
+  } else if (!productToAdd.inStock) {
+    inform(
+      `Product '${show(
+        weedProductsJSON,
+        productId,
+        true
+      )}' is currently out of stock`
+    );
+  } else {
+    inform(`No product was found with ID: '${productId}'. No action taken`);
+  }
+  return weedCart;
+}
+
+module.exports = { create, index, show, destroy, update, addToCart };
